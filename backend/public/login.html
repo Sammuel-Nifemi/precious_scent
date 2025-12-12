@@ -66,40 +66,49 @@
 
     <form id="loginForm">
 
-    <!-- Username -->
-    <input type="text" id="username" placeholder="Username" required>
+        <!-- Username -->
+        <input type="text" id="username" placeholder="Username" required>
 
-    <!-- Password + Eye Icon -->
-    <div style="position: relative; width: 90%; margin: 8px auto;">
-        <input 
-            type="password" 
-            id="password" 
-            placeholder="Password" 
-            required
-            style="width:100%; padding:12px; padding-right:40px; border:1px solid #ccc; border-radius:6px; font-size:16px;"
-        >
+        <!-- Password + Eye Icon -->
+        <div style="position: relative; width: 90%; margin: 8px auto;">
+            <input 
+                type="password" 
+                id="password" 
+                placeholder="Password" 
+                required
+                style="width:100%; padding:12px; padding-right:40px; border:1px solid #ccc; border-radius:6px; font-size:16px;"
+            >
 
-        <span 
-            onclick="togglePassword()"
-            style="position:absolute; right:12px; top:50%; transform:translateY(-50%); cursor:pointer; font-size:18px;"
-        >
-            👁️
-        </span>
-    </div>
+            <span 
+                onclick="togglePassword()"
+                style="position:absolute; right:12px; top:50%; transform:translateY(-50%); cursor:pointer; font-size:18px;"
+            >
+                👁️
+            </span>
+        </div>
 
-    <!-- Login button -->
-    <button type="submit">Login</button>
-   <p id="errorMsg"></p>
-</form>
+        <!-- Login button -->
+        <button type="submit">Login</button>
+        <p id="errorMsg"></p>
+    </form>
+</div>
 
+<!-- ===================================================== -->
+<!-- FIX: CREATE DEFAULT OWNER ACCOUNT ON FIRST LOAD       -->
+<!-- ===================================================== -->
+<script>
+localStorage.setItem("owner", JSON.stringify({
+    username: "owner",
+    password: "admin123",
+    name: "Store Owner"
+}));
+</script>
 
 <!-- ========================= -->
 <!-- LOGIN LOGIC -->
 <!-- ========================= -->
 
-
 <script src="admin-setup.js"></script>
-
 
 <script>
 function get(key){
@@ -133,14 +142,13 @@ function login(){
 }
 </script>
 
-
 <!-- ========================= -->
 <!-- FIX: HANDLE FORM SUBMISSION -->
 <!-- ========================= -->
 <script>
 document.getElementById("loginForm").addEventListener("submit", function(event){
-    event.preventDefault(); // stop page refresh
-    login(); // call the login function
+    event.preventDefault(); 
+    login(); 
 });
 </script>
 
@@ -151,7 +159,7 @@ function togglePassword(){
 }
 </script>
 
-
 </body>
 </html>
+
 
