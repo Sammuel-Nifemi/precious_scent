@@ -1,16 +1,14 @@
 {
   "version": 2,
-  "public": true,
-  "builds": [
-    {
-      "src": "frontend/**/*",
-      "use": "@vercel/static"
-    }
-  ],
   "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "frontend/$1"
-    }
+    { "src": "/login.html", "dest": "/backend/public/login.html" },
+    { "src": "/dashboard.html", "dest": "/backend/public/dashboard.html" },
+    { "src": "/owner-dashboard.html", "dest": "/backend/public/owner-dashboard.html" },
+    { "src": "/staff-dashboard.html", "dest": "/backend/public/staff-dashboard.html" },
+    { "src": "/products.html", "dest": "/backend/public/products.html" },
+    { "src": "/orders.html", "dest": "/backend/public/orders.html" },
+    { "src": "/settings.html", "dest": "/backend/public/settings.html" },
+
+    { "src": "/(.*)", "dest": "/frontend/$1" }
   ]
 }
