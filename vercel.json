@@ -1,5 +1,6 @@
 {
   "version": 2,
+  "public": true,
   "builds": [
     {
       "src": "backend/public/**/*",
@@ -9,7 +10,7 @@
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "/backend/public/$1"
+      "dest": "backend/public/$1"
     }
   ]
 }
