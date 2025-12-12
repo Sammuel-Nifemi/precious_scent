@@ -5,6 +5,17 @@ document.addEventListener("DOMContentLoaded", () => {
     initWhatsAppPulse();
 });
 
+
+
+// Only run this once to create default owner login
+if (!localStorage.getItem("owner")) {
+    localStorage.setItem("owner", JSON.stringify({
+        username: "owner",
+        password: "admin123"
+    }));
+}
+
+
 /* ========================================================
    1. CART SYSTEM (Add to cart + counter + localStorage)
 ======================================================== */
