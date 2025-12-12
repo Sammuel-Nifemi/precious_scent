@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Cart | Precious Scent</title>
+
+    <!-- CART PAGE CSS -->
+    <link rel="stylesheet" href="cart.css">
+</head>
+<body>
+
+    <div class="cart-wrapper">
+
+        <h1 class="cart-title">Your Shopping Cart</h1>
+
+        <!-- WHERE ITEMS WILL BE LOADED -->
+        <div id="cart-items" class="cart-items"></div>
+
+        <!-- CART SUMMARY -->
+        <div class="cart-summary">
+
+            <div class="summary-row">
+                <span class="summary-label">Subtotal:</span>
+                <span class="summary-value">₦<span id="cart-subtotal">0</span></span>
+            </div>
+
+            <div class="summary-row">
+                <span class="summary-label">Delivery:</span>
+                <span class="summary-value">₦<span id="cart-delivery">0</span></span>
+            </div>
+
+            <div class="summary-row total-row">
+                <span class="summary-label">Total:</span>
+                <span class="summary-value">₦<span id="cart-total">0</span></span>
+            </div>
+
+        </div>
+
+        <!-- BUTTONS -->
+        <div class="cart-actions">
+            <a href="./index.html" class="continue-btn">← Continue Shopping</a>
+            <button class="checkout-btn" onclick="checkout()">Proceed to Checkout</button>
+        </div>
+
+    </div>
+
+    <!-- ========================================= -->
+    <!-- FIREBASE CDN SCRIPTS                       -->
+    <!-- ========================================= -->
+
+    <!-- Firebase App -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <!-- Firebase Firestore -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+
+    <!-- Your Firebase Config -->
+    <script src="firebase.js"></script>
+
+    <!-- Cart Logic -->
+    <script src="cart.js"></script>
+
+</body>
+</html>
+
+

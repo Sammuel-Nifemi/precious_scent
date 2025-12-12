@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staff Dashboard - Precious Scent</title>
+    <link rel="stylesheet" href="admin.css"> 
+</head>
+<body>
+
+    <div class="sidebar">
+        <h2>Staff Panel</h2>
+        <ul>
+            <li><a href="#" id="ordersBtn">Orders</a></li>
+            <li><a href="#" id="addProductBtn">Add Product</a></li>
+            <li><a href="#" id="editProductBtn">Manage Products</a></li>
+            <li><a href="#" id="customersBtn">Customers</a></li>
+        </ul>
+
+        <button class="logout" onclick="logout()">Logout</button>
+    </div>
+
+    <div class="main-content">
+        <h1>Welcome, Staff</h1>
+        <p>Select an option from the left menu.</p>
+
+        <div id="contentArea"></div>
+    </div>
+
+<!-- ================= LOGOUT FUNCTION ================== -->
+<script>
+    function logout() {
+        localStorage.removeItem("loggedInUser");
+        window.location.href = "login.html";
+    }
+</script>
+
+
+<!-- ================= ORDERS SECTION ================== -->
+<script>
+    document.getElementById("ordersBtn").addEventListener("click", loadOrders);
+
+    function loadOrders() {
+        const orders = JSON.parse(localStorage.getItem("orders")) || [];
+
+        let html = `
+            <h2>Orders</h2>
+            <table border="1" width="100%" cellpadding="8">
+                <tr>
+                    <th>Customer</th>
+                    <th>Phone</th>
+                    <th>Address</th>
+                    <th>Items</th>
+                    <th>Total</th>
+                    <th>Status</th>
+                </tr>
+        `;
+
+        orders.forEach((order, index) => {
+            html += `
+                <tr>
+                    <td>${order.name}</td>
+                    <td>${order.phone}</td>
+                    <td>${order.address}</td>
+                    <td>${order.items.join("<br>")}</td>
+                    <td>₦${order.total}</td>
+                    <td>
+                        <select onchange="updateStatus(${index}, this.value)">
+                            <option value="Pending" ${order.status === "Pending" ? "selected" : ""}>Pending</option>
+                            <option value="Processing" ${order.status === "Processing" ? "selected" : ""}>Processing</option>
+                            <option value="Completed" ${order.status === "Completed" ? "selected" : ""}>Completed</option>
+                        </select>
+                    </td>
+                </tr>
+            `;
+        });
+
+        html += `</table>`;
+        document.getElementById("contentArea").innerHTML = html;
+    }
+
+    function updateStatus(index, newStatus) {
+        let orders = JSON.parse(localStorage.getItem("orders")) || [];
+        orders[index].status = newStatus;
+        localStorage.setItem("orders", JSON.stringify(orders));
+        alert("Status updated!");
+    }
+</script>
+
+
+<!-- ================= ADD PRODUCT SECTION ================== -->
+<script>
+    document.getElementById("addProductBtn").addEventListener("click", loadAddProductForm);
+
+    function loadAddProductForm() {
+        let html = `
+            <h2>Add New Product</h2>
+            <form id="addProductForm">
+                <label>Product Name:</label><br>
+                <input type="text" id="productName" required><br><br>
+
+                <label>Price (₦):</label><br>
+                <input type="number" id="productPrice" required><br><br>
+
+                <label>Image URL:</label><br>
+                <input type="text" id="productImage" required><br><br>
+
+                <label>Description:</label><br>
+                <textarea id="productDescription" required></textarea><br><br>
+
+                <button type="submit">Add Product</button>
+            </form>
+        `;
+
+        document.getElementById("contentArea").innerHTML = html;
+        document.getElementById("addProductForm").addEventListener("submit", saveProduct);
+    }
+
+    function saveProduct(event) {
+        event.preventDefault();
+
+        let products = JSON.parse(localStorage.getItem("products")) || [];
+
+        const newProduct = {
+            name: document.getElementById("productName").value,
+            price: document.getElementById("productPrice").value,
+            image: document.getElementById("productImage").value,
+            description: document.getElementById("productDescription").value
+        };
+
+        products.push(newProduct);
+        localStorage.setItem("products", JSON.stringify(products));
+
+        alert("Product added successfully!");
+        loadAddProductForm();
+    }
+</script>
+
+
+<!-- ================= MANAGE PRODUCTS SECTION ================== -->
+<script>
+    document.getElementById("editProductBtn").addEventListener("click", loadManageProducts);
+
+    function loadManageProducts() {
+        let products = JSON.parse(localStorage.getItem("products")) || [];
+
+        let html = `
+            <h2>Manage Products</h2>
+            <table border="1" width="100%" cellpadding="8">
+                <tr>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Image</th>
+                    <th>Description</th>
+                    <th>Actions</th>
+                </tr>
+        `;
+
+        products.forEach((product, index) => {
+            html += `
+                <tr>
+                    <td>${product.name}</td>
+                    <td>₦${product.price}</td>
+                    <td><img src="${product.image}" width="60"></td>
+                    <td>${product.description}</td>
+                    <td>
+                        <button onclick="editProduct(${index})">Edit</button>
+                        <button onclick="deleteProduct(${index})">Delete</button>
+                    </td>
+                </tr>
+            `;
+        });
+
+        html += `</table>`;
+        document.getElementById("contentArea").innerHTML = html;
+    }
+
+    function deleteProduct(index) {
+        let products = JSON.parse(localStorage.getItem("products")) || [];
+        products.splice(index, 1);
+        localStorage.setItem("products", JSON.stringify(products));
+        alert("Product deleted!");
+        loadManageProducts();
+    }
+
+    function editProduct(index) {
+        let products = JSON.parse(localStorage.getItem("products")) || [];
+        let p = products[index];
+
+        let html = `
+            <h2>Edit Product</h2>
+            <form id="editForm">
+                <label>Name:</label><br>
+                <input type="text" id="editName" value="${p.name}" required><br><br>
+
+                <label>Price (₦):</label><br>
+                <input type="number" id="editPrice" value="${p.price}" required><br><br>
+
+                <label>Image URL:</label><br>
+                <input type="text" id="editImage" value="${p.image}" required><br><br>
+
+                <label>Description:</label><br>
+                <textarea id="editDescription" required>${p.description}</textarea><br><br>
+
+                <button type="submit">Save Changes</button>
+            </form>
+        `;
+
+        document.getElementById("contentArea").innerHTML = html;
+
+        document.getElementById("editForm").addEventListener("submit", function(e){
+            e.preventDefault();
+
+            products[index].name = document.getElementById("editName").value;
+            products[index].price = document.getElementById("editPrice").value;
+            products[index].image = document.getElementById("editImage").value;
+            products[index].description = document.getElementById("editDescription").value;
+
+            localStorage.setItem("products", JSON.stringify(products));
+
+            alert("Product updated!");
+            loadManageProducts();
+        });
+    }
+</script>
+
+
+<!-- ================= CUSTOMERS SECTION ================== -->
+<script>
+    document.getElementById("customersBtn").addEventListener("click", loadCustomers);
+
+    function loadCustomers() {
+        const customers = JSON.parse(localStorage.getItem("customers")) || [];
+
+        let html = `
+            <h2>Customers</h2>
+            <table border="1" width="100%" cellpadding="8">
+                <tr>
+                    <th>Name</th>
+                    <th>Phone</th>
+                    <th>Address</th>
+                </tr>
+        `;
+
+        customers.forEach(c => {
+            html += `
+                <tr>
+                    <td>${c.name}</td>
+                    <td>${c.phone}</td>
+                    <td>${c.address}</td>
+                </tr>
+            `;
+        });
+
+        html += `</table>`;
+        document.getElementById("contentArea").innerHTML = html;
+    }
+</script>
+
+
+</body>
+</html>
+

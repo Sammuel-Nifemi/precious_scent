@@ -1,0 +1,90 @@
+/* GLOBAL */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: #f7f5fb;
+    display: flex;
+}
+
+/* SIDEBAR */
+.sidebar {
+    width: 240px;
+    height: 100vh;
+    background: linear-gradient(180deg, #6d0fa8, #9b3fcb, #c56bff);
+    color: white;
+    padding: 25px 20px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    overflow-y: auto;
+    box-shadow: 4px 0 15px rgba(0,0,0,0.2);
+}
+
+.sidebar h2 {
+    margin-top: 0;
+    font-size: 26px;
+    letter-spacing: 1px;
+    margin-bottom: 40px;
+}
+
+.sidebar a {
+    display: block;
+    padding: 15px 12px;
+    color: white;
+    text-decoration: none;
+    font-size: 17px;
+    margin-bottom: 12px;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+.sidebar a:hover {
+    background: rgba(255,255,255,0.2);
+}
+
+.sidebar .active {
+    background: rgba(255,255,255,0.3);
+    font-weight: bold;
+}
+
+/* CONTENT */
+.content {
+    margin-left: 260px;
+    padding: 30px;
+    width: calc(100% - 260px);
+}
+
+h1 {
+    margin-top: 0;
+    color: #5e0a8a;
+}
+
+/* DASHBOARD CARDS */
+.dashboard-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.card {
+    background: white;
+    padding: 25px;
+    border-radius: 14px;
+    width: 260px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.08);
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card h3 {
+    margin: 0;
+    color: #5e0a8a;
+}
+
+.card p {
+    font-size: 24px;
+    font-weight: bold;
+}

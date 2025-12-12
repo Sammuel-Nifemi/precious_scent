@@ -1,0 +1,21 @@
+{
+  "storeName": "Precious Scent",
+  "description": "Quality fragrances around Ajah & Lekki",
+  "address": "Ajah, Lagos",
+  "email": "preciousscent@example.com",
+  "phone": "08022130525",
+  "whatsapp": "2348022130525",
+  "instagram": "https://www.instagram.com/preciou.sscent/",
+  "tiktok": "https://www.tiktok.com/@preciousscent0",
+  "logo": "",
+  "favicon": "",
+  "banner": "",
+  "theme": {
+    "mode": "light",
+    "primaryColor": "pink"
+  },
+  "notifications": {
+    "orderEmail": "preciousscent01@gmail.com",
+    "enabled": true
+  }
+}

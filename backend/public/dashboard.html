@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Precious Scent Admin Dashboard</title>
+    <link rel="stylesheet" href="admin.css">
+</head>
+
+<body>
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+    <h2>Precious Scent</h2>
+
+    <a href="dashboard.html" class="active">Dashboard</a>
+    <a href="products.html">Products</a>
+    <a href="orders.html">Orders</a>
+    <a href="settings.html">Admin Settings</a>
+    <a href="#" id="logoutBtn">Logout</a>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="content">
+    <h1>Dashboard Overview</h1>
+
+    <div class="dashboard-cards">
+        <div class="card">
+            <h3>Total Orders</h3>
+            <p id="totalOrders">Loading...</p>
+        </div>
+
+        <div class="card">
+            <h3>Total Revenue</h3>
+            <p id="totalRevenue">Loading...</p>
+        </div>
+
+        <div class="card">
+            <h3>Pending Orders</h3>
+            <p id="pendingOrders">Loading...</p>
+        </div>
+
+        <div class="card">
+            <h3>Completed Orders</h3>
+            <p id="completedOrders">Loading...</p>
+        </div>
+    </div>
+</div>
+
+<script>
+fetch("/dashboard")
+  .then(res => res.json())
+  .then(data => {
+      document.getElementById("totalOrders").textContent = data.totalOrders;
+      document.getElementById("totalRevenue").textContent =
+        "₦" + data.totalRevenue.toLocaleString();
+      document.getElementById("pendingOrders").textContent = data.pendingOrders;
+      document.getElementById("completedOrders").textContent = data.completedOrders;
+  })
+  .catch(err => console.error("Dashboard error:", err));
+
+// LOGOUT FUNCTION
+document.getElementById("logoutBtn").onclick = () => {
+    fetch("/auth/logout", { method: "POST" })
+      .then(() => {
+          window.location.href = "login.html";
+      })
+      .catch(err => console.error("Logout error:", err));
+};
+</script>
+</body>
+</html>
+

@@ -1,0 +1,350 @@
+
+/* =========================================================
+   GLOBAL RESET
+=========================================================*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    background-color: #fff;
+    color: #333;
+    line-height: 1.6;
+}
+
+
+.hero {
+    position: relative;
+    height: 70vh;
+    width: 100%;
+    overflow: hidden;
+}
+
+.hero-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(60%);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: white;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.shop-btn {
+    background: #e91e63;
+    padding: 12px 24px;
+    border-radius: 5px;
+    color: white;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+
+/* =========================================================
+   BUTTONS
+=========================================================*/
+.btn-primary {
+    background-color: #d6336c;
+    color: #fff;
+    padding: 12px 26px;
+    border-radius: 6px;
+    display: inline-block;
+    text-decoration: none;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #b02657;
+}
+
+/* =========================================================
+   HEADER / NAVBAR
+=========================================================*/
+.header {
+    width: 100%;
+    padding: 15px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #fff;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo h1 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #d6336c;
+}
+
+.logo span {
+    color: #111;
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    transition: 0.3s ease;
+}
+
+.navbar a:hover {
+    color: #d6336c;
+}
+
+.cart-link {
+    color: #d6336c;
+    font-weight: 600;
+}
+
+/* =========================================================
+   HERO SECTION
+=========================================================*/
+.hero {
+    height: 70vh;
+    background: linear-gradient(to right, #fff0f6, #ffe3e8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    text-align: center;
+}
+
+.hero-text h2 {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #d6336c;
+}
+
+.hero-text p {
+    font-size: 1.1rem;
+    margin: 15px 0 20px;
+    color: #555;
+}
+
+/* =========================================================
+   PRODUCTS SECTION
+=========================================================*/
+.products-section {
+    padding: 60px 40px;
+    text-align: center;
+}
+
+.products-section h2 {
+    font-size: 2.2rem;
+    margin-bottom: 25px;
+}
+
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+/* Card */
+.product-card {
+    background: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    transition: 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+}
+
+/* PERFECT IMAGE SIZE */
+.product-card img {
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 12px;
+}
+
+.product-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+}
+
+.product-price {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #d6336c;
+    margin-bottom: 12px;
+}
+
+.add-to-cart {
+    width: 100%;
+    padding: 12px;
+    background: #111;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: 0.3s ease;
+}
+
+.add-to-cart:hover {
+    background: #d6336c;
+}
+
+/* =========================================================
+   ABOUT SECTION
+=========================================================*/
+.about-section {
+    padding: 60px 40px;
+    background: #fff7fa;
+    text-align: center;
+}
+
+.about-section p {
+    max-width: 700px;
+    margin: auto;
+    font-size: 1.05rem;
+    color: #444;
+}
+
+/* =========================================================
+   CONTACT SECTION
+=========================================================*/
+.contact-section {
+    padding: 60px 40px;
+    text-align: center;
+}
+
+contact-section h2 {
+    margin-bottom: 20px;
+}
+
+.contact-form {
+    max-width: 600px;
+    margin: auto;
+    text-align: left;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: #d6336c;
+    outline: none;
+}
+
+/* =========================================================
+   FOOTER
+=========================================================*/
+.footer {
+    background: #111;
+    color: #fff;
+    text-align: center;
+    padding: 25px;
+}
+
+.social-icons {
+    margin-top: 10px;
+}
+
+.social-icons a {
+    margin: 0 12px;
+    font-size: 1.6rem;
+    color: #fff;
+    transition: 0.3s ease;
+}
+
+.social-icons a:hover {
+    color: #d6336c;
+}
+
+/* =========================================================
+   WHATSAPP FLOATING BUTTON
+=========================================================*/
+.whatsapp-float {
+    position: fixed;
+    right: 20px;
+    bottom: 25px;
+    width: 60px;
+    height: 60px;
+    background: #25D366;
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    z-index: 2000;
+    transition: 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.1);
+    background: #1da855;
+}
+
+/* Pulse animation */
+.whatsapp-float.pulse {
+    animation: pulse 1.4s infinite;
+}
+.footer {
+  background: #000;
+  padding: 20px 0;
+  text-align: center;
+}
+
+.footer-icons {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+}
+
+.footer-icon i {
+  font-size: 30px;
+  color: #fff;
+  transition: 0.3s ease;
+}
+
+.footer-icon:hover i {
+  color: #ff4f7b;
+  transform: scale(1.2);
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37,211,102,0.6);}
+    70% { transform: scale(1.1); box-shadow: 0 0 0 20px rgba(37,211,102,0);}
+    100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37,211,102,0);}
+}

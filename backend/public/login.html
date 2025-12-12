@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login – Precious Scent</title>
+    <link rel="stylesheet" href="admin.css">
+    <style>
+        body {
+            background: #f7f3ff;
+            font-family: Arial, sans-serif;
+        }
+
+        .login-container {
+            width: 350px;
+            margin: 120px auto;
+            background: white;
+            padding: 30px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            color: #5a0ba9;
+        }
+
+        input {
+            width: 90%;
+            padding: 12px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 16px;
+        }
+
+        button {
+            width: 95%;
+            padding: 12px;
+            background: #7a1bbf;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background: #5a0ba9;
+        }
+
+        #errorMsg {
+            color: red;
+            margin-top: 10px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="login-container">
+    <h2>Admin Login</h2>
+
+    <form id="loginForm">
+
+    <!-- Username -->
+    <input type="text" id="username" placeholder="Username" required>
+
+    <!-- Password + Eye Icon -->
+    <div style="position: relative; width: 90%; margin: 8px auto;">
+        <input 
+            type="password" 
+            id="password" 
+            placeholder="Password" 
+            required
+            style="width:100%; padding:12px; padding-right:40px; border:1px solid #ccc; border-radius:6px; font-size:16px;"
+        >
+
+        <span 
+            onclick="togglePassword()"
+            style="position:absolute; right:12px; top:50%; transform:translateY(-50%); cursor:pointer; font-size:18px;"
+        >
+            👁️
+        </span>
+    </div>
+
+    <!-- Login button -->
+    <button type="submit">Login</button>
+   <p id="errorMsg"></p>
+</form>
+
+
+<!-- ========================= -->
+<!-- LOGIN LOGIC -->
+<!-- ========================= -->
+
+<script>
+function get(key){
+    return JSON.parse(localStorage.getItem(key) || "null");
+}
+
+function login(){
+    let username = document.getElementById("username").value.trim();
+    let password = document.getElementById("password").value;
+
+    let owner = get("owner");
+    let staff = get("staff") || [];
+
+    // OWNER LOGIN
+    if(owner && username === owner.username && password === owner.password){
+        localStorage.setItem("loggedInUser", JSON.stringify({role:"owner"}));
+        window.location.href = "owner-dashboard.html";
+        return;
+    }
+
+    // STAFF LOGIN
+    let found = staff.find(s => s.username === username && s.password === password);
+    if(found){
+        localStorage.setItem("loggedInUser", JSON.stringify({role:"staff", name: found.name}));
+        window.location.href = "staff-dashboard.html";
+        return;
+    }
+
+    // WRONG LOGIN
+    document.getElementById("errorMsg").innerText = "Incorrect username or password";
+}
+</script>
+
+
+<!-- ========================= -->
+<!-- FIX: HANDLE FORM SUBMISSION -->
+<!-- ========================= -->
+<script>
+document.getElementById("loginForm").addEventListener("submit", function(event){
+    event.preventDefault(); // stop page refresh
+    login(); // call the login function
+});
+</script>
+
+<script>
+function togglePassword(){
+    let pass = document.getElementById("password");
+    pass.type = pass.type === "password" ? "text" : "password";
+}
+</script>
+
+
+</body>
+</html>
+

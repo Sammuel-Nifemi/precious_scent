@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Precious Scent | Online Store</title>
+
+    <!-- FONT AWESOME -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- CSS FILE -->
+    <link rel="stylesheet" href="./index.css">
+</head>
+<body>
+
+    <!-- HEADER / NAVBAR -->
+    <header class="header">
+        <div class="logo">
+            <h1>Precious <span>Scent</span></h1>
+        </div>
+
+        <nav class="navbar">
+            <ul>
+                <li><a href="#hero">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+
+                <li>
+                    <a href="cart.html" class="cart-link">
+                        Cart (<span id="cart-count">0</span>)
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero" id="hero">
+        <video autoplay muted loop playsinline class="hero-video">
+            <source src="./video/hero.mp4" type="video/mp4">
+        </video>
+
+        <div class="hero-content">
+            <h1>Luxury Fragrances, Just for You</h1>
+            <p>Discover long-lasting perfumes and body mists from Precious Scent.</p>
+            <a href="#products" class="shop-btn">Shop Now</a>
+        </div>
+    </section>
+
+    <!-- FEATURED PRODUCTS -->
+    <section id="products" class="products-section">
+        <h2>Our Best Sellers</h2>
+
+        <!-- 🔥 DYNAMIC PRODUCTS CONTAINER -->
+        <div id="dynamic-products" class="products-grid"></div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about" class="about-section">
+        <h2>About Precious Scent</h2>
+        <p>
+            Precious Scent is an online fragrance store focused on quality,
+            affordability, and long-lasting perfumes. Every bottle is carefully
+            selected to make you feel confident all day.
+        </p>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="contact-section">
+        <h2>Contact & Orders</h2>
+        <p>Have questions or want to place a bulk order? Send us a message.</p>
+
+        <form class="contact-form">
+            <div class="form-group">
+                <label>Full Name</label>
+                <input type="text" placeholder="Enter your full name" required>
+            </div>
+
+            <div class="form-group">
+                <label>Email / WhatsApp</label>
+                <input type="text" placeholder="example@gmail.com / 0803..." required>
+            </div>
+
+            <div class="form-group">
+                <label>Message / Order Details</label>
+                <textarea rows="4" placeholder="Tell us what you want to order" required></textarea>
+            </div>
+
+            <button type="submit" class="btn-primary">Send Message</button>
+        </form>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+  <div class="footer-icons">
+    <a href="mailto:preciou.sscent@gmail.com" class="footer-icon">
+      <i class="fa-regular fa-envelope"></i>
+    </a>
+
+    <a href="https://instagram.com/preciou.sscent" class="footer-icon" target="_blank">
+      <i class="fab fa-instagram"></i>
+    </a>
+
+    <a href="https://tiktok.com/@preciousscent0" class="footer-icon" target="_blank">
+      <i class="fab fa-tiktok"></i>
+    </a>
+
+    <a href="https://wa.me/2348022130525" class="footer-icon" target="_blank">
+      <i class="fab fa-whatsapp"></i>
+    </a>
+  </div>
+</footer>
+
+
+    <!-- JAVASCRIPT -->
+    <script src="firebase.js"></script>
+    <script src="main.js"></script>
+    <script src="shop.js"></script>
+
+    <!-- WHATSAPP FLOAT -->
+    <a href="https://wa.me/2348022130525" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+</body>
+</html>

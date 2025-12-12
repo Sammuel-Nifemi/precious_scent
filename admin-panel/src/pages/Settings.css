@@ -1,0 +1,44 @@
+.settings-wrapper {
+  padding: 30px;
+}
+
+.settings-form {
+  background: #fff;
+  padding: 25px;
+  border-radius: 10px;
+  width: 70%;
+  box-shadow: 0px 4px 20px rgba(0,0,0,0.08);
+}
+
+.settings-form label {
+  display: block;
+  margin-top: 15px;
+  font-weight: 600;
+}
+
+.settings-form input,
+.settings-form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 6px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 15px;
+}
+
+.save-btn {
+  margin-top: 20px;
+  padding: 12px 20px;
+  background: #ff4f7b;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.save-btn:hover {
+  transform: scale(1.05);
+  background: #ff2f65;
+}
