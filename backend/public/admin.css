@@ -1,90 +1,163 @@
-/* GLOBAL */
-body {
-    margin: 0;
-    font-family: 'Segoe UI', sans-serif;
-    background: #f7f5fb;
-    display: flex;
+/* =========================
+   GLOBAL STYLES
+========================= */
+* {
+  box-sizing: border-box;
 }
 
-/* SIDEBAR */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: #f7f5fb;
+}
+
+/* =========================
+   SIDEBAR
+========================= */
 .sidebar {
-    width: 240px;
-    height: 100vh;
-    background: linear-gradient(180deg, #6d0fa8, #9b3fcb, #c56bff);
-    color: white;
-    padding: 25px 20px;
-    position: fixed;
-    left: 0;
-    top: 0;
-    overflow-y: auto;
-    box-shadow: 4px 0 15px rgba(0,0,0,0.2);
+  width: 240px;
+  height: 100vh;
+  background: linear-gradient(180deg, #6d0fa8, #9b3fcb, #c56bff);
+  color: white;
+  padding: 25px 20px;
+  position: fixed;
+  left: 0;
+  top: 0;
+  overflow-y: auto;
+  box-shadow: 4px 0 15px rgba(0,0,0,0.2);
+  z-index: 1000;
 }
 
 .sidebar h2 {
-    margin-top: 0;
-    font-size: 26px;
-    letter-spacing: 1px;
-    margin-bottom: 40px;
+  margin-top: 0;
+  font-size: 26px;
+  letter-spacing: 1px;
+  margin-bottom: 40px;
 }
 
 .sidebar a {
-    display: block;
-    padding: 15px 12px;
-    color: white;
-    text-decoration: none;
-    font-size: 17px;
-    margin-bottom: 12px;
-    border-radius: 8px;
-    transition: 0.3s;
+  display: block;
+  padding: 15px 12px;
+  color: white;
+  text-decoration: none;
+  font-size: 17px;
+  margin-bottom: 12px;
+  border-radius: 8px;
+  transition: 0.3s;
 }
 
 .sidebar a:hover {
-    background: rgba(255,255,255,0.2);
+  background: rgba(255,255,255,0.2);
 }
 
-.sidebar .active {
-    background: rgba(255,255,255,0.3);
-    font-weight: bold;
+.sidebar a.active {
+  background: rgba(255,255,255,0.3);
+  font-weight: bold;
 }
 
-/* CONTENT */
+/* =========================
+   CONTENT
+========================= */
 .content {
-    margin-left: 260px;
-    padding: 30px;
-    width: calc(100% - 260px);
+  margin-left: 260px;
+  padding: 30px;
+  width: calc(100% - 260px);
 }
 
 h1 {
-    margin-top: 0;
-    color: #5e0a8a;
+  margin-top: 0;
+  color: #5e0a8a;
 }
 
-/* DASHBOARD CARDS */
+/* =========================
+   DASHBOARD CARDS
+========================= */
 .dashboard-cards {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
 }
 
 .card {
-    background: white;
-    padding: 25px;
-    border-radius: 14px;
-    width: 260px;
-    box-shadow: 0 0 15px rgba(0,0,0,0.08);
-    transition: 0.3s;
+  background: white;
+  padding: 25px;
+  border-radius: 14px;
+  width: 260px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.08);
+  transition: 0.3s;
 }
 
 .card:hover {
-    transform: translateY(-5px);
+  transform: translateY(-5px);
 }
 
 .card h3 {
-    margin: 0;
-    color: #5e0a8a;
+  margin: 0;
+  color: #5e0a8a;
 }
 
 .card p {
-    font-size: 24px;
-    font-weight: bold;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+/* =========================
+   CHART
+========================= */
+.chart-container {
+  width: 100%;
+  overflow-x: auto;
+}
+
+canvas {
+  max-width: 100%;
+  height: auto !important;
+}
+
+/* =========================
+   MOBILE MENU BUTTON
+========================= */
+.menu-btn {
+  display: none;
+  font-size: 26px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #5e0a8a;
+}
+
+/* =========================
+   MOBILE RESPONSIVENESS
+========================= */
+@media (max-width: 768px) {
+  /* Hide sidebar by default */
+  .sidebar {
+    left: -100%;
+    transition: left 0.3s ease;
+  }
+
+  .sidebar.active {
+    left: 0;
+  }
+
+  /* Show menu button */
+  .menu-btn {
+    display: block;
+  }
+
+  /* Full-width content */
+  .content {
+    margin-left: 0 !important;
+    width: 100% !important;
+    padding: 15px;
+  }
+
+  /* Stack cards */
+  .dashboard-cards {
+    flex-direction: column;
+  }
+
+  .card {
+    width: 100%;
+  }
 }
